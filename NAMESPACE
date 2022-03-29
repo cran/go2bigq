@@ -1,0 +1,4 @@
+exportPattern("^[[:alpha:]]+")
+importFrom("gmp", "as.bigq", "as.bigz")
+importFrom("Rmpfr", "formatMpfr", "mpfr")
+importFrom("methods", "is")
