@@ -1,5 +1,6 @@
-05f3804b16d5f76e49fdce39493918e9 *DESCRIPTION
+bb9e155d20f46f5fca2c3814b695c2da *DESCRIPTION
 bbadae4404b15ef866f308b6bfbd3ce3 *NAMESPACE
-dc80d45f74daed969c3b23bf5a21be54 *R/go2bigq.R
-ae5700a381ee02195eb8a69d649f7861 *man/go2bigq-package.Rd
-836a3c9fd2ecda6526e3767133d32bde *man/go2bigq.Rd
+49ba19d5633d746513a788b3c622fae4 *R/go2bigq.R
+71c6dc7e207bddd8b707c51949618b7d *build/partial.rdb
+bf946417ff446becf1ec23df514365ed *man/go2bigq-package.Rd
+4417bba80cbff42b19e62c4baef76b73 *man/go2bigq.Rd

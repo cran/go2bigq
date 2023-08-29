@@ -8,6 +8,8 @@
 # --   a character string of the form '[+,-][digits][.][digits][e,E][+,-][digits]' 
 #  --  a list  containing any one of the above types
 
+# Rev 2: changed output to be a single bigq object containing all values rather than list. 
+
 go2bigq <- function(x,  ...){
 # validate
 theclass <- class(x)
@@ -39,7 +41,8 @@ return(invisible(thebigq ))
 }
 
 docharacter <- function(x){
-thebigq <- list()
+# no list!
+thebigq <- as.bigq(NULL)  #list()
 jlen <- length(x)
 for (jj in 1:jlen)	{
 	negnum = FALSE
@@ -81,6 +84,8 @@ for (jj in 1:jlen)	{
 	num <- as.bigz(gsub('^0{1,}', '', num))
 	denom <- as.bigz(10)^(theexp)	#casting order requires bigz(10)
 	if (negnum) num <- -num # hah got you
+	#no more list!
+	thebigq <- c(thebigq, as.bigq(num,denom))
 	thebigq[[jj]] <- as.bigq(num,denom)
 	}
 return(invisible(thebigq ))
@@ -88,8 +93,8 @@ return(invisible(thebigq ))
 
 # Philosophical: if I just do as.bigq, it'll examine the full binary rounded numeric.Since as.numeric(as.bigq(x)) will return the same binary rounded double, that's fine. 
 donumeric <- function(x){
-# make list to be consistent with all other branches. 
-thebigq <- as.list(as.bigq(x))
+# make NOT  list to be consistent with all other branches. 
+thebigq <- (as.bigq(x))
 return(invisible(thebigq ))
 }
 # Ok, back to doing work. 
@@ -97,7 +102,8 @@ return(invisible(thebigq ))
 #If it's a list,  dive to get teh real class
 # Wow, CRAN is getting really picky
 #if ( class(x)== 'list'){
-if (is (class(x), 'list')) {
+# rev2 fixed stupid bug - see line above
+if (is(x, 'list')) {
 	theclass <- class(x[[1]]) 
 	if(is(theclass, 'list')) {    #if (theclass == 'list') {
 	# this will catch result of, e.g.,  unlist(mpfr_class)
